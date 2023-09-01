@@ -1,0 +1,150 @@
+.search-box{
+    -fx-background-color:#FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.search-button{
+    -fx-background-color: #828282;
+    -fx-background-radius: 30;
+}
+
+.right-bar{
+    -fx-background-color: #D3D3D3;
+}
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+}
+
+.chosen-fruit-card{
+    -fx-background-color: #F16C31;
+    -fx-background-radius: 30;
+}
+
+.comboBox{
+    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-background-radius: 30;
+}
+
+.add-btn{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.free-delivery-card{
+    -fx-background-color: #D3D3D3;
+    -fx-background-radius: 30;
+}
+
+.shopping-online-card{
+    -fx-background-color: #BAEAC3;
+    -fx-background-radius: 30;
+}
+
+.fruit-item{
+    -fx-background-color: #FFFFFF;
+        -fx-background-radius: 30;
+}
+
+.categories{
+    -fx-border-radius:10
+}
+.category{
+    -fx-background-color   : rgba(80, 22, 22, 0.9);
+    -fx-border-radius: 10;
+}
+
+.product{
+-fx-background-color:#27374D;
+-fx-background-radius:10;
+}
+
+.productPriceLabel{
+-fx-background-color:#526D82;
+-fx-background-radius:10
+
+}
+
+
+.signContainer{
+    -fx-background-color: #DDE6ED;
+    -fx-background-radius: 10;
+    
+}
+
+
+.menu-bar-button {
+    -fx-background-color: #27374D; /* Background color */
+    -fx-text-fill: #DDE6ED; /* Text color */
+    -fx-font-size: 14px; /* Font size */
+
+}
+
+.menu-bar-button:hover {
+    -fx-background-color: #526D82; /* New background color on hover */
+}
+
+
+.editBtn{
+    -fx-background-color: #526D82; /* New background color on hover */
+}
+
+    .transparent-button {
+        -fx-background-color: transparent;
+        -fx-background-insets: 0;
+        -fx-padding: 0.5em 1em;
+    }
+
+
+.userBtn{
+    -fx-background-color: #9DB2BF;
+    -fx-background-radius:20
+}
+
+.userBtn:hover{
+    -fx-background-color: #DDE6ED;
+    -fx-text-fill -fx-text-fill: black; /* Set the desired text color */
+}
+
+
+.text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #27374D transparent; /* Bottom border color */
+    -fx-border-width: 0 0 1px 0; /* Bottom border only */
+    -fx-padding: 0.5em;
+    -fx-font-size: 14px;
+    -fx-font-family: Arial, sans-serif;
+    -fx-text-fill: #2d3748;
+}
+
+.text-field:focused {
+    -fx-background-color: #edf2f7;
+    -fx-border-color: #3182ce; /* Blue color for focused border */
+}
+
+
+.specialBtn{
+    -fx-background-color:#3182ce;
+}
+.specialBtn:hover{
+    -fx-background-color:#9DB2BF;
+}
+
+.atoZBtn{
+
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+.atoZBtn:hover{
+    -fx-background-color:#3182ce;
+    -fx-background-color:#526D82;
+    -fx-text-fill:#ffffff;
+}
+
+
+.numpadButton{ -fx-background-color:#DDE6ED;-fx-background-radius:20}
+.numpadButton:hover{-fx-background-color:#9DB2BF;}

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="880.0" style="-fx-background-color: #9DB2BF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.resturantsystem.Controller.MasterProductController">
+   <children>
+      <BorderPane layoutY="-1.0" prefHeight="600.0" prefWidth="880.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <right>
+            <AnchorPane prefHeight="600.0" prefWidth="457.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane layoutX="55.0" prefHeight="600.0" prefWidth="445.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <center>
+                        <VBox alignment="CENTER" prefHeight="600.0" prefWidth="446.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="99.0" prefWidth="457.0" text="Edit Item Details">
+                                 <font>
+                                    <Font name="System Bold Italic" size="35.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER" prefHeight="48.0" prefWidth="303.0">
+                                 <children>
+                                    <Label prefHeight="47.0" prefWidth="110.0" text="Re-Enter the Name" />
+                                    <TextField fx:id="nameTxt" onMouseClicked="#handleNameClick" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="48.0" prefWidth="303.0">
+                                 <children>
+                                    <Label prefHeight="47.0" prefWidth="103.0" text="Select Type">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <ComboBox fx:id="typeComboBox" onAction="#handleTypeChange" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="48.0" prefWidth="303.0">
+                                 <children>
+                                    <Label prefHeight="47.0" prefWidth="103.0" text="Re-Enter Vat Tax %">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="vatTaxTxt" onMouseClicked="#handleVatTaxClick" prefHeight="25.0" prefWidth="152.0" />
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="priceHBOX" alignment="CENTER" prefHeight="48.0" prefWidth="303.0">
+                                 <children>
+                                    <Label prefHeight="47.0" prefWidth="103.0" text="Re-Enter Price">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin></Label>
+                                    <TextField fx:id="priceTxt" onMouseClicked="#handlePriceClick" prefHeight="25.0" prefWidth="152.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="303.0">
+                                 <children>
+                                    <Label fx:id="errorLbl" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="287.0" text="Label" textFill="#e80101" />
+                                 </children>
+                                 <padding>
+                                    <Insets right="30.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="130.0" prefWidth="457.0">
+                                 <children>
+                                    <ScrollPane prefHeight="77.0" prefWidth="381.0">
+                                       <content>
+                                          <GridPane fx:id="featureCtgGridPane" alignment="CENTER" hgap="2.0" prefHeight="124.0" prefWidth="376.0" vgap="1.0">
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="77.0" prefWidth="519.0">
+                                 <children>
+                                    <Button fx:id="updateBtn" mnemonicParsing="false" onAction="#handleUpdateProduct" prefHeight="38.0" prefWidth="102.0" styleClass="editBtn" stylesheets="@style.css">
+                                       <graphic>
+                                          <ImageView fitHeight="23.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Assets/save.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="itemDeleteBtn" mnemonicParsing="false" onAction="#handleItemDel" prefHeight="39.0" prefWidth="100.0" styleClass="editBtn" stylesheets="@style.css">
+                                       <graphic>
+                                          <ImageView fitHeight="23.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Assets/delete.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </center>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </right>
+         <left>
+            <VBox prefHeight="580.0" prefWidth="413.0" style="-fx-background-color: #27374D; -fx-background-radius: 30;" styleClass="right-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="16.0" prefWidth="358.0" />
+                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                  <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="269.0" prefWidth="318.0" style="-fx-background-radius: 10; -fx-background-color: #9DB2BF;" styleClass="shadow" stylesheets="@style.css">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label fx:id="fruitNameLable" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="276.0" text="Categories" textFill="#27374d">
+                           <font>
+                              <Font name="Cambria Bold Italic" size="24.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="TOP_RIGHT" prefHeight="37.0" prefWidth="322.0">
+                           <children>
+                              <Button fx:id="ctgDelBtn" mnemonicParsing="false" onAction="#handleCtgDel" styleClass="editBtn" stylesheets="@style.css">
+                                 <graphic>
+                                    <ImageView fitHeight="23.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Assets/delete.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <ScrollPane fx:id="catgScroll" prefHeight="142.0" prefWidth="318.0" stylesheets="@style.css">
+                           <content>
+                              <GridPane fx:id="CtgGridPane" hgap="5.0" prefHeight="141.0" prefWidth="291.0" vgap="5.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                 </rowConstraints>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </GridPane>
+                           </content>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="transparent" />
+                              <String fx:value="categories" />
+                           </styleClass>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </ScrollPane>
+                        <HBox alignment="CENTER" prefHeight="16.0" prefWidth="552.0" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="chosenFruitCard1" alignment="CENTER" prefHeight="290.0" prefWidth="318.0" style="-fx-background-color: #9DB2BF; -fx-background-radius: 10;" styleClass="shadow" stylesheets="@style.css">
+                     <children>
+                        <Label fx:id="fruitNameLable1" alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="276.0" text="Items" textFill="#27374d">
+                           <font>
+                              <Font name="Cambria Bold Italic" size="24.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="TOP_RIGHT" prefHeight="28.0" prefWidth="322.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <ScrollPane fx:id="catgScroll1" prefHeight="184.0" prefWidth="322.0" stylesheets="@style.css">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="transparent" />
+                              <String fx:value="categories" />
+                           </styleClass>
+                           <content>
+                              <GridPane fx:id="subCtgGridPane" hgap="2.0" prefHeight="158.0" prefWidth="292.0" vgap="2.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                 </rowConstraints>
+                                 <padding>
+                                    <Insets left="15.0" top="20.0" />
+                                 </padding>
+                              </GridPane>
+                           </content>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </ScrollPane>
+                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                  <HBox alignment="CENTER" prefHeight="23.0" prefWidth="358.0" />
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </BorderPane.margin>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>
