@@ -1,1 +1,0 @@
-root,Allahpak~1,jdbc:mysql://localhost:3306/Restaurant

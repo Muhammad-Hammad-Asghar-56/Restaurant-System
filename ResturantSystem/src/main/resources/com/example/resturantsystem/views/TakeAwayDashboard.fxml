@@ -22,8 +22,220 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #526D82;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.resturantsystem.Controller.TakeAwayController">
    <children>
       <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <left>
-            <VBox prefHeight="700.0" prefWidth="592.0" style="-fx-background-color: #27374D;" styleClass="right-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
+         <right>
+            <BorderPane BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="20.0" />
+               </BorderPane.margin>
+               <center>
+                  <VBox prefHeight="700.0" prefWidth="532.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label prefHeight="58.0" prefWidth="448.0" text="Account Name:" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria Bold" size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="userName" prefHeight="58.0" prefWidth="577.0" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria Italic" size="25.0" />
+                                 </font>
+                              </Label>
+      <!--                        <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">-->
+      <!--                           <image>-->
+      <!--                              <Image url="@../img/ic_cart.png" />-->
+      <!--                           </image>-->
+      <!--                        </ImageView>-->
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="635.0" prefWidth="525.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <AnchorPane prefHeight="635.0" prefWidth="497.0">
+                                 <children>
+                                    <BorderPane layoutX="5.0" layoutY="24.0" prefHeight="568.0" prefWidth="476.0">
+                                       <bottom>
+                                          <VBox prefHeight="259.0" prefWidth="660.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <HBox prefHeight="69.0" prefWidth="660.0">
+                                                   <children>
+                                                      <Pane prefHeight="69.0" prefWidth="485.0">
+                                                         <children>
+                                                            <HBox alignment="CENTER" prefHeight="69.0" prefWidth="476.0">
+                                                               <children>
+                                                                  <ImageView fitHeight="50.0" fitWidth="49.0" onMouseClicked="#increaseQtyAction" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../Assets/add.png" />
+                                                                     </image>
+                                                                     <HBox.margin>
+                                                                        <Insets right="10.0" />
+                                                                     </HBox.margin>
+                                                                  </ImageView>
+                                                                  <ImageView fitHeight="50.0" fitWidth="49.0" onMouseClicked="#decreaseQtyAction" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../Assets/sub.png" />
+                                                                     </image>
+                                                                     <HBox.margin>
+                                                                        <Insets right="10.0" />
+                                                                     </HBox.margin>
+                                                                  </ImageView>
+                                                                  <ImageView fitHeight="50.0" fitWidth="49.0" onMouseClicked="#deleteOrderItemAction" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../Assets/remove.png" />
+                                                                     </image>
+                                                                     <HBox.margin>
+                                                                        <Insets right="10.0" />
+                                                                     </HBox.margin>
+                                                                  </ImageView>
+                                                                  <ImageView fitHeight="50.0" fitWidth="49.0" onMouseClicked="#ApplyDiscAction" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../Assets/discount.png" />
+                                                                     </image>
+                                                                     <HBox.margin>
+                                                                        <Insets right="10.0" />
+                                                                     </HBox.margin>
+                                                                  </ImageView>
+                                                                  <ImageView fitHeight="50.0" fitWidth="49.0" onMouseClicked="#ShiftDown" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../Assets/down-arrow.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <ImageView fitHeight="50.0" fitWidth="49.0" onMouseClicked="#ShiftUpAction" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../Assets/up-arrow.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                               </children>
+                                                               <padding>
+                                                                  <Insets left="30.0" />
+                                                               </padding>
+                                                            </HBox>
+                                                         </children>
+                                                         <padding>
+                                                            <Insets left="20.0" />
+                                                         </padding>
+                                                      </Pane>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <VBox prefHeight="149.0" prefWidth="543.0">
+                                                   <children>
+                                                      <Label fx:id="errorLabel" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="493.0" textFill="#d74242">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="16.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <HBox prefHeight="139.0" prefWidth="591.0">
+                                                         <VBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </VBox.margin>
+                                                         <children>
+                                                            <VBox prefHeight="139.0" prefWidth="372.0">
+                                                               <children>
+                                                                  <HBox prefHeight="46.0" prefWidth="417.0">
+                                                                     <children>
+                                                                        <Label prefHeight="46.0" prefWidth="150.0" text="Comments" textFill="#dde6ed">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="16.0" />
+                                                                           </font>
+                                                                           <padding>
+                                                                              <Insets left="10.0" />
+                                                                           </padding>
+                                                                           <HBox.margin>
+                                                                              <Insets left="20.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                        <TextArea fx:id="commentBoxTxt" prefHeight="37.0" prefWidth="163.0" />
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox prefHeight="46.0" prefWidth="417.0">
+                                                                     <children>
+                                                                        <Label prefHeight="46.0" prefWidth="150.0" text="Price:" textFill="#dde6ed">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="16.0" />
+                                                                           </font>
+                                                                           <padding>
+                                                                              <Insets left="10.0" />
+                                                                           </padding>
+                                                                           <HBox.margin>
+                                                                              <Insets left="20.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                        <Label fx:id="priceLbl" prefHeight="25.0" prefWidth="185.0" text="0€" textFill="#dde6ed" />
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox prefHeight="46.0" prefWidth="417.0">
+                                                                     <children>
+                                                                        <Label prefHeight="46.0" prefWidth="146.0" text="Disc.  Price:" textFill="#dde6ed">
+                                                                           <padding>
+                                                                              <Insets left="10.0" />
+                                                                           </padding>
+                                                                           <font>
+                                                                              <Font name="System Bold" size="16.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="discLbl" prefHeight="25.0" prefWidth="163.0" text="0€" textFill="#dde6ed" />
+                                                                     </children>
+                                                                     <padding>
+                                                                        <Insets left="20.0" />
+                                                                     </padding>
+                                                                  </HBox>
+                                                                  <HBox prefHeight="46.0" prefWidth="417.0">
+                                                                     <children>
+                                                                        <Label prefHeight="46.0" prefWidth="148.0" text="Total Price :" textFill="#dde6ed">
+                                                                           <padding>
+                                                                              <Insets left="10.0" />
+                                                                           </padding>
+                                                                           <font>
+                                                                              <Font name="System Bold" size="22.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <Label fx:id="totalPriceLbl" prefHeight="47.0" prefWidth="201.0" text="0€" textFill="#dde6ed">
+                                                                           <font>
+                                                                              <Font name="System Bold" size="32.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                     <padding>
+                                                                        <Insets left="20.0" />
+                                                                     </padding>
+                                                                  </HBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <Button mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="144.0" prefWidth="103.0" style="-fx-background-color: #27374D;" text="Save" textFill="#dde6ed" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                       </bottom>
+                                       <center>
+                                          <TableView fx:id="orderTable" minHeight="195.0" minWidth="196.0" prefHeight="350.0" prefWidth="511.0" BorderPane.alignment="CENTER">
+                                            <columns>
+                                              <TableColumn fx:id="nameColumn" editable="false" prefWidth="332.0" text="Name" />
+                                              <TableColumn fx:id="qtyColumn" prefWidth="57.0" text="Quantity" />
+                                                <TableColumn fx:id="totalPriceColumn" prefWidth="86.0" text="Price" />
+                                            </columns>
+                                          </TableView>
+                                       </center>
+                                    </BorderPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </center>
+            </BorderPane>
+         </right>
+         <center>
+            <VBox prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #27374D;" styleClass="right-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
                <children>
                   <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                      <children>
@@ -40,7 +252,7 @@
                      </children>
                   </HBox>
                   <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
-                  <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="297.0" prefWidth="451.0" style="-fx-background-radius: 10; -fx-background-color: #9DB2BF;" styleClass="shadow" stylesheets="@style.css">
+                  <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="304.0" prefWidth="552.0" style="-fx-background-radius: 10; -fx-background-color: #9DB2BF;" styleClass="shadow" stylesheets="@style.css">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" />
                      </VBox.margin>
@@ -50,9 +262,9 @@
                               <Font name="Cambria Bold Italic" size="36.0" />
                            </font>
                         </Label>
-                        <ScrollPane fx:id="catgScroll" prefHeight="187.0" prefWidth="552.0" stylesheets="@style.css">
+                        <ScrollPane fx:id="catgScroll" prefHeight="164.0" prefWidth="552.0" stylesheets="@style.css">
                            <content>
-                              <GridPane fx:id="CtgGridPane" prefHeight="0.0" prefWidth="0.0">
+                              <GridPane fx:id="CtgGridPane" alignment="CENTER" prefHeight="0.0" prefWidth="0.0">
                                  <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
                                  </rowConstraints>
@@ -75,7 +287,7 @@
                         <HBox alignment="CENTER" prefHeight="16.0" prefWidth="552.0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="chosenFruitCard1" alignment="CENTER" prefHeight="348.0" prefWidth="521.0" style="-fx-background-color: #9DB2BF; -fx-background-radius: 10;" styleClass="shadow" stylesheets="@style.css">
+                  <VBox fx:id="chosenFruitCard1" alignment="CENTER" prefHeight="341.0" prefWidth="552.0" style="-fx-background-color: #9DB2BF; -fx-background-radius: 10;" styleClass="shadow" stylesheets="@style.css">
                      <children>
                         <Label fx:id="fruitNameLable1" alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="276.0" text="Items" textFill="#27374d">
                            <font>
@@ -123,207 +335,11 @@
                         <Insets top="10.0" />
                      </padding>
                   </VBox>
-                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
-               </children>
-            </VBox>
-         </left>
-         <center>
-            <VBox prefHeight="700.0" prefWidth="489.0" BorderPane.alignment="CENTER">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
-                     <VBox.margin>
-                        <Insets left="20.0" right="20.0" />
-                     </VBox.margin>
+                  <Pane prefHeight="107.0" prefWidth="592.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
-                        <Label prefHeight="58.0" prefWidth="577.0" text="My Account User Name" textFill="WHITE">
-                           <font>
-                              <Font name="Cambria Bold" size="25.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/ic_cart.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="635.0" prefWidth="525.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <AnchorPane prefHeight="635.0" prefWidth="497.0">
-                           <children>
-                              <BorderPane layoutX="5.0" layoutY="24.0" prefHeight="568.0" prefWidth="476.0">
-                                 <bottom>
-                                    <VBox prefHeight="259.0" prefWidth="660.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <HBox prefHeight="69.0" prefWidth="660.0">
-                                             <children>
-                                                <Pane prefHeight="69.0" prefWidth="485.0">
-                                                   <children>
-                                                      <HBox layoutX="8.0" prefHeight="59.0" prefWidth="440.0">
-                                                         <children>
-                                                            <ImageView fitHeight="50.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../Assets/add.png" />
-                                                               </image>
-                                                               <HBox.margin>
-                                                                  <Insets right="10.0" />
-                                                               </HBox.margin>
-                                                            </ImageView>
-                                                            <ImageView fitHeight="50.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../Assets/sub.png" />
-                                                               </image>
-                                                               <HBox.margin>
-                                                                  <Insets right="10.0" />
-                                                               </HBox.margin>
-                                                            </ImageView>
-                                                            <ImageView fitHeight="50.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../Assets/remove.png" />
-                                                               </image>
-                                                               <HBox.margin>
-                                                                  <Insets right="10.0" />
-                                                               </HBox.margin>
-                                                            </ImageView>
-                                                            <ImageView fitHeight="50.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../Assets/discount.png" />
-                                                               </image>
-                                                               <HBox.margin>
-                                                                  <Insets right="10.0" />
-                                                               </HBox.margin>
-                                                            </ImageView>
-                                                            <ImageView fitHeight="50.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../Assets/add.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <ImageView fitHeight="50.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../Assets/down-arrow%20.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <ImageView fitHeight="50.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../Assets/up-arrow.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                         </children>
-                                                         <padding>
-                                                            <Insets left="30.0" />
-                                                         </padding>
-                                                      </HBox>
-                                                   </children>
-                                                   <padding>
-                                                      <Insets left="20.0" />
-                                                   </padding>
-                                                </Pane>
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <VBox prefHeight="149.0" prefWidth="543.0">
-                                             <children>
-                                                <HBox prefHeight="139.0" prefWidth="591.0">
-                                                   <VBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </VBox.margin>
-                                                   <children>
-                                                      <VBox prefHeight="139.0" prefWidth="372.0">
-                                                         <children>
-                                                            <HBox prefHeight="46.0" prefWidth="417.0">
-                                                               <children>
-                                                                  <Label prefHeight="46.0" prefWidth="150.0" text="Comments" textFill="#dde6ed">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="16.0" />
-                                                                     </font>
-                                                                     <padding>
-                                                                        <Insets left="10.0" />
-                                                                     </padding>
-                                                                     <HBox.margin>
-                                                                        <Insets left="20.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                                  <TextArea prefHeight="37.0" prefWidth="163.0" />
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox prefHeight="46.0" prefWidth="417.0">
-                                                               <children>
-                                                                  <Label prefHeight="46.0" prefWidth="150.0" text="Price:" textFill="#dde6ed">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="16.0" />
-                                                                     </font>
-                                                                     <padding>
-                                                                        <Insets left="10.0" />
-                                                                     </padding>
-                                                                     <HBox.margin>
-                                                                        <Insets left="20.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                                  <Label fx:id="priceLbl" prefHeight="55.0" prefWidth="96.0" text="1500€" textFill="#dde6ed" />
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox prefHeight="46.0" prefWidth="417.0">
-                                                               <children>
-                                                                  <Label prefHeight="46.0" prefWidth="146.0" text="Disc.  Price:" textFill="#dde6ed">
-                                                                     <padding>
-                                                                        <Insets left="10.0" />
-                                                                     </padding>
-                                                                     <font>
-                                                                        <Font name="System Bold" size="16.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="discLbl" prefHeight="55.0" prefWidth="119.0" text="1500€" textFill="#dde6ed" />
-                                                               </children>
-                                                               <padding>
-                                                                  <Insets left="20.0" />
-                                                               </padding>
-                                                            </HBox>
-                                                            <HBox prefHeight="46.0" prefWidth="417.0">
-                                                               <children>
-                                                                  <Label prefHeight="46.0" prefWidth="148.0" text="Total Price :" textFill="#dde6ed">
-                                                                     <padding>
-                                                                        <Insets left="10.0" />
-                                                                     </padding>
-                                                                     <font>
-                                                                        <Font name="System Bold" size="22.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                                  <Label fx:id="totalPriceLbl" prefHeight="55.0" prefWidth="119.0" text="1500€" textFill="#dde6ed">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="32.0" />
-                                                                     </font>
-                                                                  </Label>
-                                                               </children>
-                                                               <padding>
-                                                                  <Insets left="20.0" />
-                                                               </padding>
-                                                            </HBox>
-                                                         </children>
-                                                      </VBox>
-                                                      <Button mnemonicParsing="false" prefHeight="144.0" prefWidth="103.0" style="-fx-background-color: #27374D;" text="Save" textFill="#dde6ed" />
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </VBox>
-                                 </bottom>
-                                 <center>
-                                    <TableView minHeight="195.0" minWidth="196.0" prefHeight="349.0" prefWidth="196.0" BorderPane.alignment="CENTER">
-                                      <columns>
-                                        <TableColumn prefWidth="75.0" text="C1" />
-                                        <TableColumn prefWidth="75.0" text="C2" />
-                                      </columns>
-                                    </TableView>
-                                 </center>
-                              </BorderPane>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </HBox>
+                        <Button layoutX="70.0" layoutY="14.0" mnemonicParsing="false" onAction="#EZAction" prefHeight="35.0" prefWidth="131.0" styleClass="add-btn" text="EZ" />
+                        <Button layoutX="208.0" layoutY="14.0" mnemonicParsing="false" onAction="#XAction" prefHeight="33.0" prefWidth="120.0" styleClass="add-btn" text="x" />
+                     </children></Pane>
                </children>
             </VBox>
          </center>

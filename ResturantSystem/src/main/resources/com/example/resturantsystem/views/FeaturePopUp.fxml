@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="718.0" style="-fx-background-color: #27374D;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.resturantsystem.Controller.FeaturePopUp">
+   <children>
+      <BorderPane layoutX="100.0" layoutY="46.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <VBox prefHeight="473.0" prefWidth="661.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="66.0" prefWidth="718.0" text="Features" textFill="#dde6ed">
+                     <font>
+                        <Font name="Cambria Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="132.0" prefWidth="718.0">
+                     <children>
+                        <ScrollPane prefHeight="73.0" prefWidth="675.0">
+                           <content>
+                              <Label fx:id="lstLbl" prefHeight="96.0" prefWidth="661.0">
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                     <opaqueInsets>
+                        <Insets bottom="10.0" />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane prefHeight="73.0" prefWidth="675.0">
+                           <content>
+                              <GridPane fx:id="typeGridPane" hgap="2.0" prefHeight="64.0" prefWidth="673.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                     <opaqueInsets>
+                        <Insets bottom="10.0" />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                  </HBox>
+                  <ScrollPane prefHeight="169.0" prefWidth="621.0">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </VBox.margin>
+                     <content>
+                        <GridPane fx:id="featureGridPane" hgap="5.0" prefHeight="145.0" prefWidth="664.0">
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+                  <HBox alignment="TOP_CENTER" prefHeight="49.0" prefWidth="661.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#closeBtnAction" prefHeight="25.0" prefWidth="76.0" styleClass="add-btn" stylesheets="@style.css" text="Close" />
+                        <Button fx:id="SaveBtn" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="25.0" prefWidth="76.0" styleClass="add-btn" stylesheets="@style.css" text="Done" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,20 @@
+*START OF LEGAL INVOICE* 
+1234 Elm Street 
+City, Greece 
+Phone: (123) 456-7890 
+Website: www.streetcafe.com 
+**Invoice** 
+Invoice Number: 49 
+Date: 1695308990 
+Item                 Quantity   Price      Tax        
+-------------------------------------------------- 
+Bazingass            1.0        228        20         
+
+Subtotal: $240 
+Disc: $12.00 
+
+Total Amount: $228 
+**Thank you for your purchase!** 
+*END OF LEGAL INVOICE* 
+ Marking 
+[<]1001;;;1695308990;173;;49;200;0.00;0.00;0.00;0.00;40;0.00;0.00;0.00;228;0[>]

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="148.0" styleClass="productContainer" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="119.0" prefWidth="148.0">
+         <center>
+            <VBox prefHeight="123.0" prefWidth="148.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="148.0" styleClass="productContainer" text="Burger" textFill="#d3c3c3" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="148.0" stylesheets="style.css" text=" " />
+                  <HBox prefHeight="32.0" prefWidth="148.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="43.0" prefWidth="76.0" text="Price" textAlignment="RIGHT" textFill="#d3c3c3">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label contentDisplay="RIGHT" prefHeight="43.0" prefWidth="76.0" text="12 $" textFill="#f8e8e8">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

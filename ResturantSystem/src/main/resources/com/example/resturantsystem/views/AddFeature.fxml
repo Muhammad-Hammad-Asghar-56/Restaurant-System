@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="196.0" prefWidth="413.0" style="-fx-background-color: #27374D;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.resturantsystem.Controller.AddFeatureController">
+   <children>
+      <BorderPane layoutX="37.0" layoutY="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Label alignment="CENTER" prefHeight="61.0" prefWidth="413.0" text="Add Feature" textFill="WHITE" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="23.0" />
+               </font>
+            </Label>
+         </top>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="39.0" prefWidth="413.0">
+                     <children>
+                        <TextField fx:id="nameTxt" onKeyPressed="#namePress" prefHeight="25.0" prefWidth="220.0" promptText="Enter the Name" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="413.0">
+                     <children>
+                        <TextField fx:id="priceTxt" onKeyPressed="#pricePress" prefHeight="25.0" prefWidth="219.0" promptText="Enter the Price " styleClass="text-field" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="errorLbl" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="315.0" text=" " textFill="RED" />
+                  <HBox  alignment="CENTER" prefHeight="61.0" prefWidth="413.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="25.0" prefWidth="56.0" styleClass="add-btn" stylesheets="@style.css" text="Save">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#closeBtnAction" prefHeight="25.0" prefWidth="60.0" styleClass="add-btn" stylesheets="@style.css" text="Close" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="112.0" style="-fx-background-radius: 10;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.resturantsystem.Controller.CategoryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="112.0" style="-fx-background-radius: 10; -fx-background-color: #27374D;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.resturantsystem.Controller.CategoryController">
    <children>
-      <BorderPane prefHeight="43.0" prefWidth="111.0" style="-fx-background-radius: 10; -fx-background-color: #27374D;" styleClass="category" stylesheets="@style.css">
+      <BorderPane prefHeight="43.0" prefWidth="111.0" style="-fx-background-radius: 10;" styleClass="transparent" stylesheets="@style.css">
          <center>
             <Label fx:id="ctglbl" text="Label" textFill="WHITE" BorderPane.alignment="CENTER" />
          </center>

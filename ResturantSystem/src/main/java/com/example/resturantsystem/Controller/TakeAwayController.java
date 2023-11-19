@@ -1,244 +1,414 @@
 package com.example.resturantsystem.Controller;
 
-import com.example.resturantsystem.CategoryListener;
+import com.example.resturantsystem.DL.CategoriesDL;
+import com.example.resturantsystem.DL.OrderDL;
+import com.example.resturantsystem.FeatureLstListener;
+import com.example.resturantsystem.Misc.TxtFileWriter;
+import com.example.resturantsystem.Misc.VirtualInput;
+import com.example.resturantsystem.NumpadListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 
 import com.example.resturantsystem.model.*;
-import com.example.resturantsystem.MyListener;
+import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class TakeAwayController implements Initializable {
-    @FXML
-    private VBox chosenFruitCard;
 
     @FXML
-    private Label fruitNameLable;
+    private Label discLbl;
 
     @FXML
-    private Label fruitPriceLabel;
+    private Label  userName;
 
     @FXML
-    private ImageView fruitImg;
-
+    private Label priceLbl;
 
     @FXML
-    private ScrollPane CtgScroll;
-    @FXML
-    private ScrollPane subCtgScroll;
+    private Label totalPriceLbl;
+
     @FXML
     private GridPane CtgGridPane;
 
     @FXML
     private GridPane subCtgGridPane;
 
-    private List<Fruit> fruits = new ArrayList<>();
-    private Image image;
-    private MyListener myListener;
-    private CategoryListener CtgListener;
+    @FXML
+    private TableView orderTable;
+    @FXML
+    private TableColumn<OrderItem, String> nameColumn;
+    @FXML
+    private TableColumn<OrderItem, Integer> qtyColumn;
+    @FXML
+    private TableColumn<OrderItem, Float> totalPriceColumn;
+    @FXML
+    private Label errorLabel;
 
-    private List<Fruit> getData() {
-        List<Fruit> fruits = new ArrayList<>();
-        Fruit fruit;
+    @FXML
+    private TextArea commentBoxTxt;
 
-        fruit = new Fruit();
-        fruit.setName("Kiwi Kiwi Kiwi");
-        fruit.setPrice(2.99);
-//        fruit.setImgSrc("/img/kiwi.png");
-        fruit.setColor("6A7324");
-        fruits.add(fruit);
+    private User activeUser;
+    private ArrayList<OrderFeature> selectedOrderFeature = new ArrayList<>();
+    private VirtualInput myKeyBoard = new VirtualInput();
+    private float freeProductPrice = 0.0f;
+    private Float kGQty = 0f;
+    private Order currentOrder;
 
-        fruit = new Fruit();
-        fruit.setName("Coconut");
-        fruit.setPrice(3.99);
-//        fruit.setImgSrc("/img/coconut.png");
-        fruit.setColor("A7745B");
-        fruits.add(fruit);
+    private NumpadListener freeProductPriceListener = new NumpadListener() {
+        @Override
+        public void onClickListener(String word) {
+            freeProductPrice = Float.parseFloat(word);
+        }
+    };
+    private NumpadListener kgQtyListener = new NumpadListener() {
+        @Override
+        public void onClickListener(String word) {
+            kGQty = Float.parseFloat(word);
+        }
+    };
+    private FeatureLstListener myFeatureListener = new FeatureLstListener() {
+        @Override
+        public void onclick(ArrayList<OrderFeature> featurelst) {
+            selectedOrderFeature = featurelst;
+        }
+    };
 
-        fruit = new Fruit();
-        fruit.setName("Peach");
-        fruit.setPrice(1.50);
-//        fruit.setImgSrc("/img/peach.png");
-        fruit.setColor("F16C31");
-        fruits.add(fruit);
+    private ArrayList<OrderItem> orderItems = new ArrayList<>();
 
-        fruit = new Fruit();
-        fruit.setName("Grapes");
-        fruit.setPrice(0.99);
-//        fruit.setImgSrc("/img/grapes.png");
-        fruit.setColor("291D36");
-        fruits.add(fruit);
+    private void setSubCtgs(String ctg, ArrayList<Product> productLst) {
 
-        fruit = new Fruit();
-        fruit.setName("Watermelon");
-        fruit.setPrice(4.99);
-//        fruit.setImgSrc("/img/watermelon.png");
-        fruit.setColor("22371D");
-        fruits.add(fruit);
+        if (subCtgGridPane != null) {
+            subCtgGridPane.getChildren().clear(); // Clear the grid
 
-        fruit = new Fruit();
-        fruit.setName("Orange");
-        fruit.setPrice(2.99);
-//        fruit.setImgSrc("/img/orange.png");
-        fruit.setColor("FB5D03");
-        fruits.add(fruit);
+            try {
+                int column = 0;
+                int row = 1;
+                for (int i = 0; i < productLst.size(); i++) {
 
-        fruit = new Fruit();
-        fruit.setName("StrawBerry");
-        fruit.setPrice(0.99);
-//        fruit.setImgSrc("/img/strawberry.png");
-        fruit.setColor("80080C");
-        fruits.add(fruit);
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("/com/example/resturantsystem/views/item.fxml"));
 
-        fruit = new Fruit();
-        fruit.setName("Mango");
-        fruit.setPrice(0.99);
-//        fruit.setImgSrc("/img/mango.png");
-        fruit.setColor("FFB605");
-        fruits.add(fruit);
+                    AnchorPane anchorPane = fxmlLoader.load();
+                    ItemController item = fxmlLoader.getController();
 
-        fruit = new Fruit();
-        fruit.setName("Cherry");
-        fruit.setPrice(0.99);
-//        fruit.setImgSrc("/img/cherry.png");
-        fruit.setColor("5F060E");
-        fruits.add(fruit);
 
-        fruit = new Fruit();
-        fruit.setName("Banana");
-        fruit.setPrice(1.99);
-//        fruit.setImgSrc("/img/banana.png");
-        fruit.setColor("E7C00F");
-        fruits.add(fruit);
+                    // Add click event to the single grid cell
+                    int finalI = i;
+                    item.setData(productLst.get(finalI).getName(), productLst.get(finalI).getPriceWithVatTax());
 
-        return fruits;
-    }
+                    item.getNameLabel().setOnMouseClicked(event -> { // add items donot ask for the features
+                        Product p = productLst.get(finalI);
+                        addOrderItem(p);
+                    });
 
-    private void setChosenFruit(Fruit fruit) {
-        fruitNameLable.setText(fruit.getName());
-        double price = fruit.getPrice();
-        String formattedPrice = String.format("%.2f", price); // Format with 2 decimal places
-        fruitPriceLabel.setText(formattedPrice);
-//        image = new Image(getClass().getResourceAsStream(fruit.getImgSrc()));
-//        fruitImg.setImage(image);
-        chosenFruitCard.setStyle("-fx-background-color: #" + fruit.getColor() + ";\n" +
-                "    -fx-background-radius: 30;");
-    }
 
-    private void setSubCtgs(String ctg){
-        System.out.println("From :"+ctg);
-        subCtgGridPane.getChildren().clear(); // Clear the grid
+                    item.getPriceLable().setOnMouseClicked(event -> { //  Ask for the Features
+                        System.out.println("Clicked on Sub on: " + ctg);
+                        if ((! productLst.get(finalI).getType().equals("Free")) &&  productLst.get(finalI).getFeatureLst().size() > 0) {
+                            getFeatures( productLst.get(finalI));
+                        }
+                        Product p = productLst.get(finalI);
+                        addOrderItem(p);
+                    });
 
-        try {
-            int column=0;
-            int row=1;
-            for (int i = 0; i < fruits.size(); i++) {
+                    if (column == 4) {
+                        column = 0;
+                        row++;
+                    }
 
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/example/resturantsystem/views/item.fxml"));
+                    subCtgGridPane.add(anchorPane, column++, row); //(child,column,row)
+                    //set grid width
+                    subCtgGridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+                    subCtgGridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                    subCtgGridPane.setMaxWidth(Region.USE_PREF_SIZE);
 
-                AnchorPane anchorPane = fxmlLoader.load();
-                ItemController itemController = fxmlLoader.getController();
-                itemController.setData(fruits.get(i) ,myListener);
+                    //set grid height
+                    subCtgGridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+                    subCtgGridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                    subCtgGridPane.setMaxHeight(Region.USE_PREF_SIZE);
 
-                // Add click event to the single grid cell
-                anchorPane.setOnMouseClicked(event -> {
-                    System.out.println("Clicked on Sub on: " + ctg);
-                });
 
-                if (column == 4) {
-                    column = 0;
-                    row++;
+                    GridPane.setMargin(anchorPane, new Insets(0, 2, 2, 0));
                 }
-
-                subCtgGridPane.add(anchorPane, column++, row); //(child,column,row)
-                //set grid width
-                subCtgGridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
-                subCtgGridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                subCtgGridPane.setMaxWidth(Region.USE_PREF_SIZE);
-
-                //set grid height
-                subCtgGridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
-                subCtgGridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                subCtgGridPane.setMaxHeight(Region.USE_PREF_SIZE);
-
-
-                GridPane.setMargin(anchorPane, new Insets(0,2,2,0));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
-    private void subCtgGridPane(Fruit fruit) {
-        System.out.println("From Set Sub Ctg" + fruit.getName());
 
+    private void addOrderItem(Product p) {
+        OrderItem newOrderItem = null;
+        switch (p.getType()) {
+            case "KG": // ask the KGs and the price will be zero
+                myKeyBoard.showNumpad("KG Qty ", kgQtyListener);
+                newOrderItem = new OrderItem(p, 0, kGQty, selectedOrderFeature);
+                break;
+            case "Free": // qty will be the 1 need to ask the price
+                myKeyBoard.showNumpad("Product Price", freeProductPriceListener);
+                newOrderItem = new OrderItem(p, freeProductPrice, 1, selectedOrderFeature);
+                break;
+            case "Simple": // donot need to ask the price and the qty they are 0 and 1 respectively
+                newOrderItem = new OrderItem(p, 0, 1, selectedOrderFeature);
+                break;
+            default:
+                // code block
+                break;
+        }
+        if (orderItems == null) {
+            return;
+        }
+        if(newOrderItem.getQty()==0){
+            return;
+        }
+        currentOrder.insertOrderItem(newOrderItem);
+        System.out.println(newOrderItem.toString());
+        selectedOrderFeature = new ArrayList<>();
+        updateTableView(this.currentOrder.getOrderItems());
+    }
+
+    private void getFeatures(Product p) {
+        Dialog<Void> FeatureDialog = new Dialog<>();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/resturantsystem/views/FeaturePopUp.fxml"));
+        Pane keyboardPane;
+
+        try {
+            keyboardPane = loader.load();
+            FeaturePopUp featurePopUpControls = loader.getController();
+            featurePopUpControls.setData(p.getFeatureLst(), myFeatureListener);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        FeatureDialog.getDialogPane().setContent(keyboardPane);
+        FeatureDialog.showAndWait();
+    }
+
+    public void setUser(User loginUser) {
+        this.activeUser = loginUser;
+        this.userName.setText(loginUser.getUserName());
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        fruits.addAll(getData());
-        if (fruits.size() > 0) {
-//            setChosenFruit(fruits.get(0));
-            myListener = new MyListener() {
-                @Override
-                public void onClickListener(Fruit fruit) {
-                    subCtgGridPane(fruit);
-//                    setChosenFruit(fruit);
-                }
-            };
-        }
+        updateCategories();
+        this.currentOrder = new Order(activeUser);
+
+    }
+
+    public void updateCategories() {
         int column = 0;
         int row = 1;
-        try {
-            for (int i = 0; i < fruits.size(); i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/example/resturantsystem/views/categoryTemplate.fxml"));
-                AnchorPane anchorPane = fxmlLoader.load();
-                CategoryController itemController = fxmlLoader.getController();
-                itemController.setData(fruits.get(i).getName(),CtgListener);
-                //  Add click event to each grid cell
-                int finalI = i;
-                anchorPane.setOnMouseClicked(event -> {
-                    setSubCtgs(fruits.get(finalI).getName());
-                });
+        ArrayList<Category> categories = CategoriesDL.getCategories();
 
-                if (column == 4) {
-                    column = 0;
-                    row++;
-                }
-
-                CtgGridPane.add(anchorPane, column++, row); //(child,column,row)
-                //set grid width
-                CtgGridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
-                CtgGridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                CtgGridPane.setMaxWidth(Region.USE_PREF_SIZE);
-
-                //set grid height
-                CtgGridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
-                CtgGridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                CtgGridPane.setMaxHeight(Region.USE_PREF_SIZE);
-
-
-                GridPane.setMargin(anchorPane, new Insets(5));
+        for (int i = 0; i < categories.size(); i++) {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/com/example/resturantsystem/views/categoryTemplate.fxml"));
+            AnchorPane anchorPane = null;
+            try {
+                anchorPane = fxmlLoader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
+            CategoryController itemController = fxmlLoader.getController();
+            itemController.setData(categories.get(i).getName());
+            //  Add click event to each grid cell
+            int finalI = i;
+            anchorPane.setOnMouseClicked(event -> {
+                setSubCtgs(categories.get(finalI).getName(), categories.get(finalI).getProducts());
+            });
+
+            if (column == 4) {
+                column = 0;
+                row++;
+            }
+
+            CtgGridPane.add(anchorPane, column++, row); //(child,column,row)
+            //set grid width
+            CtgGridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+            CtgGridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+            CtgGridPane.setMaxWidth(Region.USE_PREF_SIZE);
+
+            //set grid height
+            CtgGridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+            CtgGridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+            CtgGridPane.setMaxHeight(Region.USE_PREF_SIZE);
+
+
+            GridPane.setMargin(anchorPane, new Insets(5));
+        }
+    }
+
+    private void updateTableView(ArrayList<OrderItem> orderItems) {
+        orderTable.getItems().clear();
+        ObservableList<OrderItem> observableOrderItemList = FXCollections.observableArrayList(orderItems);
+
+
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        qtyColumn.setCellValueFactory(new PropertyValueFactory<>("displayQty"));
+        totalPriceColumn.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+
+        orderTable.setItems(observableOrderItemList);
+        updatePriceLabels();
+    }
+
+    private void updatePriceLabels() {
+        priceLbl.setText(String.valueOf(currentOrder.calculatePrice()));
+        totalPriceLbl.setText(String.valueOf(currentOrder.calculatePriceWithDisc()));
+        discLbl.setText(String.valueOf(currentOrder.calculateDisc()));
+    }
+
+
+    //                 Implement the Buttons
+    @FXML
+    void ApplyDiscAction(MouseEvent event) {
+        int selectedIndex = orderTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex < 0) {
+            errorLabel.setText("No Entry Found ! Select any Entry");
+            return;
+        }
+
+        final float[] disc = {0};
+        NumpadListener discListener = new NumpadListener() {
+            @Override
+            public void onClickListener(String word) {
+                disc[0] = Float.parseFloat(word);
+                if (activeUser.getAuth_Disc() >= disc[0]) {
+                    // Apply the discount to the selected item
+                    OrderItem selectedItem = currentOrder.getOrderItems().get(selectedIndex);
+                    selectedItem.setDisc(disc[0]);
+
+                    // Update the TableView
+                    updateTableView(currentOrder.getOrderItems());
+                    return;
+                }
+                errorLabel.setText("Not Authorized to Disc. " + String.valueOf(disc[0]) + "%");
+            }
+        };
+
+        myKeyBoard.showNumpad("Discount %", discListener);
+    }
+
+
+    @FXML
+    void ShiftDown(MouseEvent event) {
+        int selectedIndex = orderTable.getSelectionModel().getSelectedIndex();
+        this.currentOrder.shiftDown(selectedIndex);
+        updateTableView(this.currentOrder.getOrderItems());
+        orderTable.getSelectionModel().select(selectedIndex < orderTable.getItems().size() ? selectedIndex+1:selectedIndex);
+    }
+
+    @FXML
+    void ShiftUpAction(MouseEvent event) {
+        int selectedIndex = orderTable.getSelectionModel().getSelectedIndex();
+        this.currentOrder.shiftUp(selectedIndex);
+        updateTableView(this.currentOrder.getOrderItems());
+        orderTable.getSelectionModel().select(selectedIndex !=0 ? selectedIndex-1:selectedIndex);
+    }
+
+    @FXML
+    void decreaseQtyAction(MouseEvent event) {
+        int selectedIndex = orderTable.getSelectionModel().getSelectedIndex();
+        this.currentOrder.DescProductQty(selectedIndex, 1);
+        updateTableView(this.currentOrder.getOrderItems());
+        orderTable.getSelectionModel().select(selectedIndex);
+    }
+
+    @FXML
+    void deleteOrderItemAction(MouseEvent event) {
+        int selectedIndex = orderTable.getSelectionModel().getSelectedIndex();
+        this.currentOrder.deleteOrderItem(selectedIndex);
+        updateTableView(this.currentOrder.getOrderItems());
+        orderTable.getSelectionModel().select(selectedIndex);
+    }
+
+    @FXML
+    void increaseQtyAction(MouseEvent event) {
+        int selectedIndex = orderTable.getSelectionModel().getSelectedIndex();
+        this.currentOrder.IncProductQty(selectedIndex, 1);
+        updateTableView(this.currentOrder.getOrderItems());
+        orderTable.getSelectionModel().select(selectedIndex);
+    }
+
+    @FXML
+    void saveBtnAction(ActionEvent event) {
+        Order newOrder = new Order(activeUser, commentBoxTxt.getText(), 0, currentOrder.getOrderItems());
+        OrderDL.InsertOrder(activeUser, newOrder);
+        resetPage();
+    }
+
+    private void resetPage() {
+        this.selectedOrderFeature = new ArrayList<>();
+        this.orderTable.getItems().clear();
+        this.discLbl.setText("0");
+        this.totalPriceLbl.setText("0");
+        this.priceLbl.setText("0");
+        this.commentBoxTxt.setText("");
+        this.errorLabel.setText("");
+        this.currentOrder.setOrderItems(new ArrayList<>());
+    }
+
+    @FXML
+    void XAction(ActionEvent event) {
+        System.out.println("X-Action");
+
+        // Create a new stage
+        Stage secondaryStage = new Stage();
+
+        // Load the FXML content into the new stage
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/resturantsystem/views/XReport.fxml"));
+
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            // Set the scene for the new stage
+            secondaryStage.setScene(scene);
+            secondaryStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    @FXML
+    void EZAction(ActionEvent event) {
+        System.out.println("EZ-Action");
+
+        // Create a new stage
+        Stage secondaryStage = new Stage();
+
+        // Load the FXML content into the new stage
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/resturantsystem/views/EZReport.fxml"));
+
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            // Set the scene for the new stage
+            secondaryStage.setScene(scene);
+            secondaryStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+

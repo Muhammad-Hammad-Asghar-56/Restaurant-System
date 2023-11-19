@@ -1,12 +1,9 @@
 package com.example.resturantsystem.Controller;
 
 import com.example.resturantsystem.CategoryListener;
-import com.example.resturantsystem.MyListener;
-import com.example.resturantsystem.model.Fruit;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 
 public class CategoryController {
     @FXML
@@ -19,8 +16,8 @@ public class CategoryController {
 
     private CategoryListener myListener;
 
-    public void setData(String catgName, CategoryListener myListener) {
-        this.myListener = myListener;
+    public void setData(String catgName) {
         ctglbl.setText(catgName);
     }
+
 }

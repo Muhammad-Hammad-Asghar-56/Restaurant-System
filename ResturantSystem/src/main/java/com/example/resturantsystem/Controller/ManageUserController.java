@@ -173,8 +173,8 @@ public class ManageUserController {
             checkUserPassTxt.setText("");
             return;
         }
-        else if (userPassTxt.getText().length() <=4){
-            errorLbl.setText("Password is too Weak try to make Complex");
+        else if (userPassTxt.getText().length() == 0){
+            errorLbl.setText("Password must be enter");
             errorLbl.setTextFill(Paint.valueOf("Red"));
             checkUserPassTxt.setText("");
             userPassTxt.setText("");

@@ -1,5 +1,6 @@
 package com.example.resturantsystem.model;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Product {
@@ -47,7 +48,9 @@ public class Product {
     public float getPrice() {
         return price;
     }
-
+    public float getPriceWithVatTax(){
+        return price + (price * vatTax / 100);
+    }
     public void setPrice(float price) {
         this.price = price;
     }
@@ -55,7 +58,10 @@ public class Product {
     public float getVatTax() {
         return vatTax;
     }
-
+    public String getDisplayVatTax(){
+        DecimalFormat decimalFormat = new DecimalFormat("0");
+        return decimalFormat.format(this.vatTax)+'%';
+    }
     public void setVatTax(float vatTax) {
         this.vatTax = vatTax;
     }
@@ -74,5 +80,8 @@ public class Product {
 
     public void setFeatureLst(ArrayList<Features> featureLst) {
         FeatureLst = featureLst;
+    }
+    public float getVatTaxPrice(){
+        return this.price * this.vatTax / 100;
     }
 }

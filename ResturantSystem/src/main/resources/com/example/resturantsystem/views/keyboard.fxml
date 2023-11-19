@@ -12,7 +12,7 @@
    <children>
       <BorderPane layoutX="49.0" layoutY="-19.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <TextField fx:id="textField" prefHeight="31.0" prefWidth="478.0" promptText="Enter Text Here" BorderPane.alignment="CENTER">
+            <TextField fx:id="textField" onKeyPressed="#handleKeyPress" prefHeight="31.0" prefWidth="478.0" promptText="Enter Text Here" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="5.0" />
                </BorderPane.margin>

@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class VirtualKeyboardController {
@@ -65,7 +67,13 @@ public class VirtualKeyboardController {
         Stage stage = (Stage) textField.getScene().getWindow();
         stage.close();
     }
-
+    @FXML
+    private void handleKeyPress(KeyEvent e){
+        if(e.getCode().equals(KeyCode.ENTER)){
+            MyKeyboardListner.onClickListener(textField.getText());
+            closeDialog();
+        }
+    }
     // List of all the key buttons
     @FXML
     private Button[] keyButtons;

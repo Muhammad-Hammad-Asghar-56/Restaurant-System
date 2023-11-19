@@ -20,158 +20,150 @@
    <children>
       <BorderPane layoutX="-7.0" prefHeight="600.0" prefWidth="889.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <AnchorPane prefHeight="600.0" prefWidth="307.0" BorderPane.alignment="CENTER">
-               <children>
-                  <BorderPane layoutX="1.0" prefHeight="600.0" prefWidth="306.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <center>
-                        <VBox alignment="CENTER" prefHeight="600.0" prefWidth="387.0" style="-fx-background-radius: 20; -fx-background-color: #526D82;" BorderPane.alignment="CENTER">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <BorderPane.margin>
-                              <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
-                           </BorderPane.margin>
-                           <children>
-                              <ScrollPane prefHeight="499.0" prefWidth="259.0" style="-fx-background-color: #526D82;">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="251.0" style="-fx-background-color: #526D82;">
-                                       <children>
-                                          <GridPane fx:id="userGrid" layoutX="14.0" layoutY="32.0" prefHeight="466.0" prefWidth="251.0" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                          </GridPane>
-                                       </children>
-                                    </AnchorPane>
-                                </content>
-                                 <VBox.margin>
-                                    <Insets left="10.0" right="10.0" />
-                                 </VBox.margin>
-                              </ScrollPane>
-                           </children>
-                        </VBox>
-                     </center>
-                  </BorderPane>
-               </children>
-            </AnchorPane>
+            <BorderPane prefHeight="600.0" prefWidth="306.0">
+               <center>
+                  <VBox alignment="CENTER" prefHeight="600.0" prefWidth="387.0" style="-fx-background-radius: 20; -fx-background-color: #526D82;" BorderPane.alignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <BorderPane.margin>
+                        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+                     </BorderPane.margin>
+                     <children>
+                        <ScrollPane prefHeight="499.0" prefWidth="259.0" style="-fx-background-color: #526D82;">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="251.0" style="-fx-background-color: #526D82;">
+                                 <children>
+                                    <GridPane fx:id="userGrid" layoutX="14.0" layoutY="32.0" prefHeight="466.0" prefWidth="251.0" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+               </center>
+            </BorderPane>
          </left>
          <center>
-            <AnchorPane prefHeight="600.0" prefWidth="572.0" BorderPane.alignment="CENTER">
-               <children>
-                  <BorderPane prefHeight="600.0" prefWidth="575.0">
-                     <center>
-                        <VBox prefHeight="600.0" prefWidth="556.0" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="600.0" prefWidth="571.0">
+               <center>
+                  <VBox alignment="CENTER" prefHeight="600.0" prefWidth="556.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="90.0" prefWidth="575.0">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="90.0" prefWidth="575.0">
-                                 <children>
-                                    <Label fx:id="titleLbl" alignment="CENTER" prefHeight="43.0" prefWidth="352.0" text="Edit User" textFill="#27374d">
-                                       <font>
-                                          <Font name="System Bold Italic" size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="69.0" prefWidth="575.0">
-                                 <children>
-                                    <Label contentDisplay="RIGHT" prefHeight="24.0" prefWidth="157.0" text="Enter the Name" textFill="#27374d">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <TextField fx:id="userNameTxt" onMouseClicked="#userNameMouseClick" prefHeight="25.0" prefWidth="188.0" styleClass="text-field" stylesheets="@style.css" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="71.0" prefWidth="575.0">
-                                 <children>
-                                    <Label contentDisplay="RIGHT" prefHeight="24.0" prefWidth="157.0" text="Enter the User Password" textFill="#27374d">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <TextField fx:id="userPassTxt" onMouseClicked="#userPassMouseClick" prefHeight="25.0" prefWidth="188.0" stylesheets="@style.css" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="74.0" prefWidth="575.0">
-                                 <children>
-                                    <Label contentDisplay="RIGHT" prefHeight="24.0" prefWidth="157.0" text="Re-Enter the Password" textFill="#27374d">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <TextField fx:id="checkUserPassTxt" onMouseClicked="#confirmPassMouseClick" prefHeight="25.0" prefWidth="188.0" styleClass="text-field" stylesheets="@style.css" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="74.0" prefWidth="575.0">
-                                 <children>
-                                    <Label contentDisplay="RIGHT" prefHeight="24.0" prefWidth="157.0" text="Authourized Disc %" textFill="#27374d">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <TextField fx:id="auth_DIsTxt" onMouseClicked="#authDiscMouseClick" prefHeight="25.0" prefWidth="188.0" styleClass="text-field" stylesheets="@style.css" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="70.0" prefWidth="575.0">
-                                 <children>
-                                    <Label contentDisplay="RIGHT" prefHeight="24.0" prefWidth="157.0" text="Enter the Role" textFill="#27374d">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <ComboBox fx:id="roleComboBox" prefHeight="25.0" prefWidth="184.0" promptText="Role" visibleRowCount="2" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="49.0" prefWidth="575.0">
-                                 <children>
-                                    <Label fx:id="errorLbl" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="359.0" text="Error Display" textFill="RED" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="38.0" prefWidth="52.0" styleClass="editBtn" stylesheets="@style.css">
-                                       <HBox.margin>
-                                          <Insets right="20.0" />
-                                       </HBox.margin>
-                                       <graphic>
-                                          <ImageView fitHeight="33.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../Assets/save.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Button fx:id="delBtn" mnemonicParsing="false" onAction="#delBtnAction" prefHeight="38.0" prefWidth="52.0" styleClass="editBtn" stylesheets="@style.css">
-                                       <graphic>
-                                          <ImageView fitHeight="33.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../Assets/delete.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                 </children>
-                              </HBox>
+                              <Label fx:id="titleLbl" alignment="CENTER" prefHeight="43.0" prefWidth="352.0" text="Edit User" textFill="#27374d">
+                                 <font>
+                                    <Font name="System Bold Italic" size="48.0" />
+                                 </font>
+                              </Label>
                            </children>
-                        </VBox>
-                     </center>
-                  </BorderPane>
-               </children>
-            </AnchorPane>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="69.0" prefWidth="575.0">
+                           <children>
+                              <Label contentDisplay="RIGHT" prefHeight="24.0" prefWidth="157.0" text="Enter the Name" textFill="#27374d">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="userNameTxt" onMouseClicked="#userNameMouseClick" prefHeight="31.0" prefWidth="315.0" styleClass="text-field" stylesheets="@style.css" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="71.0" prefWidth="575.0">
+                           <children>
+                              <Label contentDisplay="RIGHT" prefHeight="24.0" prefWidth="157.0" text="Enter the User Password" textFill="#27374d">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="userPassTxt" onMouseClicked="#userPassMouseClick" prefHeight="31.0" prefWidth="326.0" stylesheets="@style.css" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="74.0" prefWidth="575.0">
+                           <children>
+                              <Label contentDisplay="RIGHT" prefHeight="24.0" prefWidth="157.0" text="Re-Enter the Password" textFill="#27374d">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="checkUserPassTxt" onMouseClicked="#confirmPassMouseClick" prefHeight="31.0" prefWidth="323.0" styleClass="text-field" stylesheets="@style.css" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="575.0">
+                           <children>
+                              <Label contentDisplay="RIGHT" prefHeight="24.0" prefWidth="157.0" text="Enter the Role" textFill="#27374d">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ComboBox fx:id="roleComboBox" prefHeight="25.0" prefWidth="329.0" promptText="Role" visibleRowCount="2" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="74.0" prefWidth="575.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label contentDisplay="RIGHT" prefHeight="24.0" prefWidth="157.0" text="Authourized Disc %" textFill="#27374d">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="auth_DIsTxt" onMouseClicked="#authDiscMouseClick" prefHeight="31.0" prefWidth="336.0" styleClass="text-field" stylesheets="@style.css" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="49.0" prefWidth="575.0">
+                           <children>
+                              <Label fx:id="errorLbl" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="359.0" text="Error Display" textFill="RED" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveBtnAction" prefHeight="38.0" prefWidth="52.0" styleClass="editBtn" stylesheets="@style.css">
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="33.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Assets/save.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="delBtn" mnemonicParsing="false" onAction="#delBtnAction" prefHeight="38.0" prefWidth="52.0" styleClass="editBtn" stylesheets="@style.css">
+                                 <graphic>
+                                    <ImageView fitHeight="33.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Assets/delete.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </center>
+            </BorderPane>
          </center>
       </BorderPane>
    </children>

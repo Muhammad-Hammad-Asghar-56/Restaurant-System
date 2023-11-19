@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="601.0" maxWidth="1101.0" minHeight="599.0" minWidth="1099.0" prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #27374D7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.resturantsystem.Controller.MasterDashboardController">
+<AnchorPane maxHeight="601.0" maxWidth="1202.0" minHeight="599.0" minWidth="1099.0" prefHeight="600.0" prefWidth="1164.0" style="-fx-background-color: #27374D7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.resturantsystem.Controller.MasterDashboardController">
    <children>
-      <BorderPane prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <AnchorPane prefHeight="600.0" prefWidth="220.0" BorderPane.alignment="CENTER">
                <children>
@@ -66,21 +66,6 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button fx:id="addCatalogueBtn" alignment="BASELINE_LEFT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#addCatalogueAction" prefHeight="64.0" prefWidth="220.0" styleClass="menu-bar-button" stylesheets="@style.css" text="Add Catalogues">
-                           <graphic>
-                              <ImageView fitHeight="37.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Assets/groceries.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="30.0" />
-                           </padding>
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Button>
                         <Button fx:id="catalogueMenuBtn" alignment="BASELINE_LEFT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#catalogueMenuAction" prefHeight="64.0" prefWidth="220.0" styleClass="menu-bar-button" stylesheets="@style.css" text="Manage Catalogues">
                            <graphic>
                               <ImageView fitHeight="37.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
@@ -96,11 +81,11 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button fx:id="reportMenuBtn" alignment="BASELINE_LEFT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#reportMenuAction" prefHeight="65.0" prefWidth="220.0" styleClass="menu-bar-button" stylesheets="@style.css" text="Reports">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#closeBtnAction" prefHeight="64.0" prefWidth="220.0" styleClass="menu-bar-button" stylesheets="@style.css" text="Close">
                            <graphic>
                               <ImageView fitHeight="37.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/report.png" />
+                                    <Image url="@../Assets/addProduct.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -117,12 +102,7 @@
             </AnchorPane>
          </left>
          <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <BorderPane prefHeight="600.0" prefWidth="880.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <Pane fx:id="childPane" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-               </children>
-            </AnchorPane>
+            <AnchorPane fx:id="childPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>

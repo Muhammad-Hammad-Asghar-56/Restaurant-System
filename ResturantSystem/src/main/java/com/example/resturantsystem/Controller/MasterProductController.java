@@ -6,7 +6,7 @@ import com.example.resturantsystem.NumpadListener;
 import com.example.resturantsystem.keyBoardListener;
 import com.example.resturantsystem.model.Category;
 import com.example.resturantsystem.model.Features;
-import com.example.resturantsystem.model.Fruit;
+
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -29,6 +29,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -159,6 +160,7 @@ public class MasterProductController implements Initializable {
         CategoriesDL.InActiveCategory(selectedCategory.getId());
         updateCategoriesGrid();
     }
+
 
     @FXML
     void handleItemDel(ActionEvent event) {

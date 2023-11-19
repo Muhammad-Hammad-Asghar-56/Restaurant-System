@@ -100,7 +100,7 @@ public class SignInController implements Initializable {
                     dashboardStage = new Stage();
                     dashboardStage.setTitle("Master Dashboard - Resturant");
                     dashboardStage.setScene(dashboardScene);
-                    dashboardStage.setResizable(false); // Prevent resizing
+//                    dashboardStage.setResizable(false); // Prevent resizing
                     ((Node) event.getSource()).getScene().getWindow().hide();
 
                     dashboardStage.show();
@@ -110,13 +110,18 @@ public class SignInController implements Initializable {
                 break;
             case "Waiter":
                 try {
-                    Parent root = FXMLLoader.load(getClass().getResource("/com/example/resturantsystem/views/TakeAwayDashboard.fxml"));
+//                    Parent root = FXMLLoader.load(getClass().getResource("/com/example/resturantsystem/views/TakeAwayDashboard.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/resturantsystem/views/TakeAwayDashboard.fxml"));
+                    Parent root = loader.load();
+                    TakeAwayController takeAwayController = loader.getController();
+                    takeAwayController.setUser(loginUser);
+
 
                     Scene dashboardScene = new Scene(root);
                     dashboardStage = new Stage();
                     dashboardStage.setTitle("Take Away Dashboard - Restaurant");
                     dashboardStage.setScene(dashboardScene);
-                    dashboardStage.setResizable(false); // Prevent resizing
+//                    dashboardStage.setResizable(false); // Prevent resizing
                     ((Node) event.getSource()).getScene().getWindow().hide();
 
                     dashboardStage.show();

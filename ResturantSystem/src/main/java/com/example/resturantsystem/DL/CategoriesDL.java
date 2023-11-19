@@ -223,7 +223,7 @@ public class CategoriesDL {
        String query="SELECT F.id,F.name,F.price FROM linkedproductfeature as LPF \n" +
                "JOIN product p ON LPF.productId = p.Id \n" +
                "JOIN Feature f ON LPF.FeatureId = f.id \n" +
-               "where p.Id = ? and p.active = true";
+               "where p.Id = ? and f.active = true and p.active = true";
 
        Connection con = DBHandler.getDBConnection();
        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
@@ -245,7 +245,7 @@ public class CategoriesDL {
     public static ArrayList<Features> getFeatures(){
 
         ArrayList<Features> featureLst=new ArrayList<>();
-        String query="SELECT F.id,F.name,F.price FROM Feature F" ;
+        String query="SELECT F.id,F.name,F.price FROM Feature F where F.active = 1" ;
 
         Connection con = DBHandler.getDBConnection();
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
@@ -276,7 +276,7 @@ public class CategoriesDL {
     }
     public static ArrayList<Features> getFeaturesExcept(int productId){
         ArrayList<Features> featureLst=new ArrayList<>();
-        String query="select * from feature f where f.id not in (select lpf.featureId from linkedproductfeature lpf where lpf.productId = ?)";
+        String query="select * from feature f where f.active=1 and f.id not in (select lpf.featureId from linkedproductfeature lpf where lpf.productId = ?)";
 
         Connection con = DBHandler.getDBConnection();
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
@@ -314,20 +314,54 @@ public class CategoriesDL {
         }
     }
     private static int getEnumTypeIdByName(String enumTypeName,String category) {
-            String query = "SELECT id FROM EnumType WHERE name = ? and type = ?";
-            Connection con = DBHandler.getDBConnection();
-            try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
-                preparedStatement.setString(1, enumTypeName);
-                preparedStatement.setString(2, category);
-                ResultSet resultSet = preparedStatement.executeQuery();
+        String query = "SELECT id FROM EnumType WHERE name = ? and type = ?";
+        Connection con = DBHandler.getDBConnection();
+        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, enumTypeName);
+            preparedStatement.setString(2, category);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-                if (resultSet.next()) {
-                    return resultSet.getInt("id");
-                }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+            if (resultSet.next()) {
+                return resultSet.getInt("id");
             }
-            return -1; // Return -1 if not found
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-
+        return -1; // Return -1 if not found
     }
+    public static void deleteFeature(int id){
+        String query = "UPDATE feature SET active = 0 WHERE id = ?";
+        try (Connection con = DBHandler.getDBConnection();
+             PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setInt(1, id); // Set the category id
+
+
+            int rowsUpdated = preparedStatement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Feature inactivated successfully");
+            } else {
+                System.out.println("Failed to inactivate Feature");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static ArrayList<Features> getAllFeature(){
+        String query="select * from feature where active=1";
+        Connection con = DBHandler.getDBConnection();
+        ArrayList<Features> featureLst=new ArrayList<>();
+        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                int Id= resultSet.getInt("id");
+                String name= resultSet.getString("name");
+                float price= resultSet.getFloat("price");
+                featureLst.add(new Features(Id,name,price));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return featureLst;
+    }
+}

@@ -1,0 +1,5 @@
+.productContainer{
+    -fx-background-radius: 10;
+    -fx-background-color : #2D2D30;
+    -fx-border-color : transparent transparent #ccc transparent;
+}

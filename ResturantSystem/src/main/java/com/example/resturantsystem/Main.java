@@ -1,6 +1,7 @@
 package com.example.resturantsystem;
 
 import com.example.resturantsystem.Misc.DBHandler;
+import com.example.resturantsystem.Misc.TxtFileWriter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,7 +15,7 @@ public class Main extends Application {
         DBHandler.getDBConnection();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("views/signIN.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Restaurant System!");
+        stage.setTitle("Restaurant System");
         stage.setScene(scene);
         stage.show();
     }

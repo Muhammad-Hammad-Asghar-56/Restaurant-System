@@ -102,14 +102,13 @@
 
 .userBtn{
     -fx-background-color: #9DB2BF;
-    -fx-background-radius:20
+    -fx-background-radius:20;
 }
 
 .userBtn:hover{
     -fx-background-color: #DDE6ED;
-    -fx-text-fill -fx-text-fill: black; /* Set the desired text color */
+    -fx-text-fill: black;
 }
-
 
 .text-field {
     -fx-background-color: transparent;
@@ -146,5 +145,5 @@
 }
 
 
-.numpadButton{ -fx-background-color:#DDE6ED;-fx-background-radius:20}
+.numpadButton{ -fx-background-color:#DDE6ED;-fx-min-width:80;-fx-min-height:60;-fx-background-radius:10;}
 .numpadButton:hover{-fx-background-color:#9DB2BF;}

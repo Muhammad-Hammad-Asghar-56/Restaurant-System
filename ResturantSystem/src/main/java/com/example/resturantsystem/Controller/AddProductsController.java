@@ -25,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 import org.controlsfx.control.action.Action;
 
 import java.io.IOException;
@@ -84,7 +85,7 @@ public class AddProductsController implements Initializable {
     private ComboBox<String> typeComboBox;
 
     @FXML
-    private TextField vatTaxTxt;
+    private ComboBox<Float> vatTaxComboBox;
     private AnchorPane selectedAnchor;
     private Category selectedCategory;
 
@@ -93,10 +94,7 @@ public class AddProductsController implements Initializable {
     private ArrayList<Features> selectedFeatures=new ArrayList<>();
     private keyBoardListener productNameListener;
     private NumpadListener productpriceListener;
-    private NumpadListener productVatTaxListener;
-    private keyBoardListener featureNameListener;
-    private NumpadListener featureCostListener;
-    private keyBoardListener ctgNameListener;
+
 
 
     private VirtualInput myVirtualInput=new VirtualInput();
@@ -104,18 +102,18 @@ public class AddProductsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setComboBox();
-        updateCategoriesGrid();
         unselectedFeatures = CategoriesDL.getFeatures();
         insertInFeatureGrid(unselectedFeatures);
         setUpListener();
     }
+    public void setCategory(Category selectedCategory){
+        this.selectedCategory=selectedCategory;
+    }
+    private void setCtg(Category selectedCategory){
+        this.selectedCategory=selectedCategory;
+    }
     private void setUpListener(){
-        ctgNameListener=new keyBoardListener() {
-            @Override
-            public void onClickListener(String word) {
-                categoryTxt.setText(word);
-            }
-        };
+
         productNameListener=new keyBoardListener() {
             @Override
             public void onClickListener(String word) {
@@ -128,26 +126,9 @@ public class AddProductsController implements Initializable {
                 priceTxt.setText(word);
             }
         };
-        productVatTaxListener=new NumpadListener() {
-            @Override
-            public void onClickListener(String word) {
-                vatTaxTxt.setText(word);
-            }
-        };
 
 
-        featureNameListener=new keyBoardListener() {
-            @Override
-            public void onClickListener(String word) {
-                featureNameTxt.setText(word);
-            }
-        };
-        featureCostListener=new NumpadListener() {
-            @Override
-            public void onClickListener(String word) {
-                featureCostTxt.setText(word);
-            }
-        };
+
     }
     private void setComboBox(){
         typeComboBox.setItems(FXCollections.observableArrayList(
@@ -156,6 +137,12 @@ public class AddProductsController implements Initializable {
                 "Simple"
         ));
         typeComboBox.getSelectionModel().select(2);
+
+        vatTaxComboBox.setItems(FXCollections.observableArrayList(
+        13f,
+            24f
+        ));
+        typeComboBox.getSelectionModel().select(1);
     }
     @FXML
     void ChangeTypeAction(InputMethodEvent event) {
@@ -165,48 +152,7 @@ public class AddProductsController implements Initializable {
     void TypeSelectionAction(ActionEvent event) {
         setUpForProductType();
     }
-    @FXML
-    void featureBtnAction(ActionEvent event) {
-        if(!featureNameTxt.getText().isEmpty() && !featureCostTxt.getText().isEmpty()){
-            float price=Float.parseFloat(featureCostTxt.getText());
-            Features newFeature= CategoriesDL.insertNewFeature(featureNameTxt.getText(),price);
-            if(newFeature == null){
-                errorLbl.setText("Try Again");
-            }
-            else{
-                unselectedFeatures = CategoriesDL.getFeatures();
-                insertInFeatureGrid(unselectedFeatures);
-                featureNameTxt.setText("");
-                featureCostTxt.setText("");
-            }
-        }
-    }
 
-    @FXML
-    void addCategoryAction(ActionEvent event) {
-        if(!categoryTxt.getText().isEmpty()){
-            if(! CategoriesDL.InsertNewCategory(categoryTxt.getText())){
-                errorLbl.setText("Category name already Present ! Try different name");
-            }
-            else {
-                updateCategoriesGrid();
-                categoryTxt.setText("");
-            }
-        }
-        else {
-            errorLbl.setText("Category name should not be empty");
-        }
-    }
-
-    @FXML
-    void featureCostAction(MouseEvent event) {
-        myVirtualInput.showNumpad("Feature Cost",featureCostListener);
-    }
-
-    @FXML
-    void featureNameAction(MouseEvent event) {
-        myVirtualInput.showKeyBoard(featureNameListener);
-    }
 
     @FXML
     void productNameAction(MouseEvent event) {
@@ -219,17 +165,15 @@ public class AddProductsController implements Initializable {
     }
 
     @FXML
-    void ctgAction(MouseEvent event) {
-        myVirtualInput.showKeyBoard(ctgNameListener);
+    void CloseBtnAction(ActionEvent event){
+        Stage s=(Stage) productNameTxt.getScene().getWindow();
+        s.close();
     }
 
-    @FXML
-    void vatTaxAction(MouseEvent event) {
-        myVirtualInput.showNumpad("Product Vat%",productVatTaxListener);
-    }
+
     @FXML
     void saveAction(ActionEvent event) {
-        if(productNameTxt.getText().isEmpty() || vatTaxTxt.getText().isEmpty() || (typeComboBox.getValue()!="Free" && priceTxt.getText().isEmpty()) ){
+        if(productNameTxt.getText().isEmpty() || (typeComboBox.getValue()!="Free" && priceTxt.getText().isEmpty()) ){
             errorLbl.setText("OOPS!  Product Details must not be empty.");
             return;
         }
@@ -246,19 +190,12 @@ public class AddProductsController implements Initializable {
                 selectedCategory.getId(),
                 productNameTxt.getText(),
                 price,
-                Float.parseFloat(vatTaxTxt.getText()),
+                vatTaxComboBox.getValue(),
                 typeComboBox.getValue(),
                 selectedFeatures
         );
         if(result){
-
-        productNameTxt.setText("");
-        priceTxt.setText("");
-        vatTaxTxt.setText("");
-        selectedCategory=null;
-        updateCategoriesGrid();
-        unselectedFeatures = CategoriesDL.getFeatures();
-        insertInFeatureGrid(unselectedFeatures);
+         this.CloseBtnAction(event);
         }
         else{
             errorLbl.setText("The product named as "+ productNameTxt.getText() +" is already Present in the Record");
@@ -271,48 +208,6 @@ public class AddProductsController implements Initializable {
         if(typeComboBox.getValue().equals("Free")){
             priceTxt.setVisible(false);
             priceLbl.setVisible(false);
-        }
-    }
-    private void updateCategoriesGrid(){
-        categories=CategoriesDL.getCategories();
-        int row = 1;
-        int col = 0;
-        if (CtgGridPane != null) {
-            CtgGridPane.getChildren().clear();
-        }
-        for (Category c : categories) {
-            AnchorPane ctgAnchor = new AnchorPane();
-            ctgAnchor.setStyle("-fx-background-color: #DDE6ED; -fx-background-radius: 10;");
-
-            // Create and configure the label
-            Label nameLabel = new Label(c.getName());
-            nameLabel.setPadding(new Insets(10, 20, 10, 20));
-            nameLabel.setAlignment(Pos.CENTER);
-
-            ctgAnchor.getChildren().add(nameLabel);
-            // Center-align the label both horizontally and vertically
-            AnchorPane.setTopAnchor(nameLabel, 0.0);
-            AnchorPane.setRightAnchor(nameLabel, 0.0);
-            AnchorPane.setBottomAnchor(nameLabel, 0.0);
-            AnchorPane.setLeftAnchor(nameLabel, 0.0);
-
-            ctgAnchor.setOnMouseClicked(event -> {
-                if(selectedCategory != null){
-                    selectedAnchor.setStyle("-fx-background-color: #DDE6ED; -fx-background-radius: 10;");
-                }
-                selectedAnchor = ctgAnchor;
-                selectedAnchor.setStyle("-fx-background-color: #526D82; -fx-background-radius: 10;");
-                selectedCategory=c;
-            });
-
-            CtgGridPane.add(ctgAnchor, col, row);
-
-            if (col == 8) {
-                row++;
-                col = 0;
-            } else {
-                col++;
-            }
         }
     }
 

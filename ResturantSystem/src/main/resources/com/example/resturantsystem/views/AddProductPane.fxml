@@ -7,8 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -17,13 +15,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="880.0" style="-fx-background-color: #9DB2BF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.resturantsystem.Controller.AddProductsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="788.0" style="-fx-background-color: #9DB2BF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.resturantsystem.Controller.AddProductsController">
    <children>
       <BorderPane layoutY="-1.0" prefHeight="410.0" prefWidth="664.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="534.0" prefWidth="880.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" prefHeight="58.0" prefWidth="898.0" text="Add Cataloges &amp; Categories" textFill="#27374d">
+                  <Label alignment="CENTER" prefHeight="58.0" prefWidth="898.0" text="Add Catalogs &amp; Categories" textFill="#27374d">
                      <font>
                         <Font name="Cambria Bold Italic" size="31.0" />
                      </font>
@@ -42,71 +40,13 @@
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin></Label>
-                        <ComboBox fx:id="typeComboBox" onAction="#TypeSelectionAction" onInputMethodTextChanged="#ChangeTypeAction" prefHeight="25.0" prefWidth="199.0" />
+                        <ComboBox fx:id="typeComboBox" onAction="#TypeSelectionAction" onInputMethodTextChanged="#ChangeTypeAction" prefHeight="25.0" prefWidth="191.0" />
                         <Label prefHeight="17.0" prefWidth="86.0" text="VAT Tax">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="vatTaxTxt" onAction="#vatTaxAction" onMouseClicked="#vatTaxAction" prefHeight="25.0" prefWidth="186.0" styleClass="text-field" stylesheets="@style.css" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="880.0">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="664.0" styleClass="shadow" stylesheets="@style.css">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="138.0" text="Categories" textFill="#27374d">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="17.0" prefWidth="138.0" text="New Category Name" />
-                              <TextField fx:id="categoryTxt" onMouseClicked="#ctgAction" prefHeight="31.0" prefWidth="307.0" styleClass="text-field" stylesheets="@style.css" />
-                              <Button fx:id="addCategoryBtn" mnemonicParsing="false" onAction="#addCategoryAction" styleClass="transparent-button" stylesheets="@style.css">
-                                 <graphic>
-                                    <ImageView fx:id="insertFeature1" fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Assets/add.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                           </children>
-                        </HBox>
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" prefHeight="180.0" prefWidth="880.0" styleClass="shadow" stylesheets="@style.css">
-                     <children>
-                        <AnchorPane prefHeight="175.0" prefWidth="652.0" style="-fx-background-color: #27374d; -fx-background-radius: 10;">
-                           <children>
-                              <BorderPane layoutX="-168.0" layoutY="-1.0" prefHeight="90.0" prefWidth="576.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <center>
-                                    <ScrollPane prefHeight="80.0" prefWidth="398.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
-                                       <content>
-                                          <GridPane fx:id="CtgGridPane" hgap="5.0" prefHeight="149.0" prefWidth="615.0" style="-fx-background-color: #27374D;" vgap="5.0">
-                                             <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                                             </rowConstraints>
-                                             <padding>
-                                                <Insets left="15.0" />
-                                             </padding>
-                                          </GridPane>
-                                       </content>
-                                       <styleClass>
-                                          <String fx:value="transparent" />
-                                          <String fx:value="categories" />
-                                       </styleClass>
-                                       <padding>
-                                          <Insets left="10.0" right="10.0" />
-                                       </padding>
-                                    </ScrollPane>
-                                 </center>
-                                 <padding>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </padding>
-                              </BorderPane>
-                           </children>
-                        </AnchorPane>
+                        <ComboBox fx:id="vatTaxComboBox" prefHeight="25.0" prefWidth="197.0" promptText="13" />
                      </children>
                   </HBox>
                   <HBox alignment="BOTTOM_CENTER" prefHeight="44.0" prefWidth="880.0">
@@ -118,42 +58,18 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="59.0" prefWidth="664.0" styleClass="shadow" stylesheets="@style.css">
+                  <HBox alignment="TOP_CENTER" prefHeight="201.0" prefWidth="788.0" styleClass="shadow" stylesheets="@style.css">
                      <children>
-                        <Label text="New Feature Name" />
-                        <TextField fx:id="featureNameTxt" onMouseClicked="#featureNameAction" prefHeight="31.0" prefWidth="187.0" />
-                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="86.0" text="Feature Cost" />
-                        <TextField fx:id="featureCostTxt" onMouseClicked="#featureCostAction" prefHeight="25.0" prefWidth="186.0" styleClass="text-field" stylesheets="@style.css">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <Button fx:id="featureBtn" mnemonicParsing="false" onAction="#featureBtnAction" styleClass="transparent-button" stylesheets="@style.css">
-                           <graphic>
-                              <ImageView fx:id="insertFeature" fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Assets/add.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" prefHeight="173.0" prefWidth="880.0" styleClass="shadow" stylesheets="@style.css">
-                     <children>
-                        <AnchorPane prefHeight="168.0" prefWidth="649.0" style="-fx-background-color: #27374d; -fx-background-radius: 10;">
+                        <AnchorPane prefHeight="191.0" prefWidth="649.0" style="-fx-background-color: #27374d; -fx-background-radius: 10;">
                            <children>
-                              <BorderPane layoutX="-1.0" layoutY="-1.0" prefHeight="133.0" prefWidth="408.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <BorderPane layoutX="-1.0" layoutY="-1.0" prefHeight="187.0" prefWidth="649.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
                                  <center>
-                                    <ScrollPane prefHeight="80.0" prefWidth="398.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
+                                    <ScrollPane prefHeight="178.0" prefWidth="639.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
                                        <content>
-                                          <GridPane fx:id="featureGridPane" hgap="5.0" prefHeight="137.0" prefWidth="613.0" style="-fx-background-color: #27374D;" vgap="2.0">
+                                          <GridPane fx:id="featureGridPane" hgap="5.0" prefHeight="184.0" prefWidth="619.0" style="-fx-background-color: #27374D;" vgap="2.0">
                                              <rowConstraints>
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" />
                                              </rowConstraints>
@@ -189,15 +105,12 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="79.0" prefWidth="880.0">
                      <children>
-                        <Button fx:id="saveProduct" mnemonicParsing="false" onAction="#saveAction" prefHeight="38.0" prefWidth="242.0" styleClass="editBtn" stylesheets="@style.css">
-                           <graphic>
-                              <ImageView fitHeight="23.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Assets/save.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
+                        <Button fx:id="saveProduct" mnemonicParsing="false" onAction="#saveAction" prefHeight="38.0" prefWidth="150.0" styleClass="add-btn" stylesheets="@style.css" text="Save">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
                         </Button>
+                        <Button mnemonicParsing="false" onAction="#CloseBtnAction" prefHeight="38.0" prefWidth="150.0" styleClass="add-btn" stylesheets="@style.css" text="Close" />
                      </children>
                   </HBox>
                </children>

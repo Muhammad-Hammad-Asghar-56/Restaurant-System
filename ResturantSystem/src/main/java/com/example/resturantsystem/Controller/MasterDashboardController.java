@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -16,29 +17,21 @@ public class MasterDashboardController {
     private Button catalogueMenuBtn;
 
     @FXML
-    private Pane childPane;
-
-    @FXML
-    private Button reportMenuBtn;
+    private AnchorPane childPane;
 
     @FXML
     private Button userMenuBtn;
-    @FXML
-    private Button addCatalogueBtn;
 
     @FXML
     void catalogueMenuAction(ActionEvent event) {
-        loadContentIntoChildPane("EditProductPane.fxml");
+//        loadContentIntoChildPane("EditProductPane.fxml");
+        loadContentIntoChildPane("NewManageCategory.fxml");
     }
 
-    @FXML
-    void reportMenuAction(ActionEvent event) {
-
-    }
 
     @FXML
-    private void addCatalogueAction(ActionEvent event) {
-        loadContentIntoChildPane("AddProductPane.fxml");
+    private void closeBtnAction(ActionEvent event) {
+        ((Stage)catalogueMenuBtn.getScene().getWindow()).close();
     }
 
     @FXML
@@ -51,19 +44,16 @@ public class MasterDashboardController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/resturantsystem/views/" + fxmlPath));
             Parent content = loader.load();
 
-            // Set layout constraints to stretch the content
-            AnchorPane.setTopAnchor(content, 0.0);
+            AnchorPane.setTopAnchor(content, 0.0);  // Set layout constraints to stretch the content
             AnchorPane.setBottomAnchor(content, 0.0);
             AnchorPane.setLeftAnchor(content, 0.0);
             AnchorPane.setRightAnchor(content, 0.0);
 
-            // Clear existing content and set the loaded content
-            childPane.getChildren().clear();
+            childPane.getChildren().clear(); // Clear existing content and set the loaded content
             childPane.getChildren().add(content);
+            childPane=(AnchorPane) content;
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }

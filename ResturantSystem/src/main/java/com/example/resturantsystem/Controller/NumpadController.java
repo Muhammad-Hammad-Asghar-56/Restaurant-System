@@ -52,7 +52,10 @@ public class NumpadController {
         Stage stage = (Stage) textField.getScene().getWindow();
         stage.close();
     }
-
+    @FXML
+    private void closeBtn(){
+            this.closeDialog();
+    }
     @FXML
     private Button[] keyButtons;
 

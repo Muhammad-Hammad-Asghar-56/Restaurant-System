@@ -1,0 +1,21 @@
+*START OF LEGAL INVOICE* 
+1234 Elm Street 
+City, Greece 
+Phone: (123) 456-7890 
+Website: www.streetcafe.com 
+**Invoice** 
+Invoice Number: 51 
+Date: 1695310258 
+Item                 Quantity   Price      Tax        
+-------------------------------------------------- 
+Cheese               1          0          0          
+Test1                1          95.10      0          
+
+Subtotal: $100.10 
+Disc: $5.01 
+
+Total Amount: $95.10 
+**Thank you for your purchase!** 
+*END OF LEGAL INVOICE* 
+ Marking 
+[<]1001;;;1695310258;173;;51;100;0.00;0.00;0.00;0.00;0.10;0.00;0.00;0.00;95.10;0[>]

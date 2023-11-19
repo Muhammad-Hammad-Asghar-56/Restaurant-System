@@ -1,0 +1,20 @@
+*START OF LEGAL INVOICE* 
+1234 Elm Street 
+City, Greece 
+Phone: (123) 456-7890 
+Website: www.streetcafe.com 
+**Invoice** 
+Invoice Number: 65 
+Date: 13-11-2023 18:40 
+Item                 Quantity   Price      Tax        
+-------------------------------------------------- 
+HI2                  2.0        46.33      13         %
+
+Subtotal: 46.33 € 
+Disc: 0.00 € 
+
+Total Amount: € 46.33 
+**Thank you for your purchase!** 
+*END OF LEGAL INVOICE* 
+ Marking 
+[<]123;;;202311131840;173;;65;41;0.00;0.00;0.00;0.00;5.33;0.00;0.00;0.00;46.33;0[>]
